@@ -51,7 +51,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const { data, error } = await requireSupabase().auth.signUp({
       email: email.trim(),
       password,
-      options: { emailRedirectTo: window.location.origin },
+      options: {
+        emailRedirectTo: new URL(import.meta.env.BASE_URL, window.location.origin).href,
+      },
     })
     if (error) throw error
     if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {

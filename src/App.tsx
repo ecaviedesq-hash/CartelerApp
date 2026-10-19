@@ -10,12 +10,14 @@ import { RegisterPage } from './pages/RegisterPage.tsx'
 import { SearchPage } from './pages/SearchPage.tsx'
 import { SetupPage } from './pages/SetupPage.tsx'
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 export default function App() {
   if (!appConfigurada) return <SetupPage />
 
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename || undefined}>
         <Routes>
           <Route element={<GuestRoute />}>
             <Route path="/login" element={<LoginPage />} />
