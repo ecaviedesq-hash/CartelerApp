@@ -1,3 +1,4 @@
+# Compila la app y la publica en GitHub Pages.
 name: Publicar en GitHub Pages
 
 on:
